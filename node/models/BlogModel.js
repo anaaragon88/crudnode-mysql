@@ -1,14 +1,12 @@
-//importamos la conexión a la DB
-import db from "../database/db.js";
-//importamos sequelize
-import { DataTypes } from "sequelize";
+import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-const BlogModel = db.define("blogs", {
-  title: { type: DataTypes.STRING },
-  content: { type: DataTypes.STRING },
-});
+const blogSchema = new Schema(
+  {
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+  },
+  { collection: "blogs" }
+);
 
-export default BlogModel;
-
-//aquí se crea el modelo de la tabla blogs
-//se define la estructura de la tabla
+export default mongoose.model("BlogModel", blogSchema);

@@ -1,8 +1,13 @@
-import { Sequelize } from "sequelize";
+import mongoose from "mongoose";
+const url = "mongodb://localhost:27017/db_mern";
+mongoose.connect(url);
 
-const db = new Sequelize('database_app', 'root', '',{
-    host: 'localhost',
-    dialect: 'mysql'
-})
+const db = mongoose.connection;
+db.on("open", () => {
+  console.log("Success ✨:");
+});
+db.on("error", () => {
+  console.log("connection error🙅🏻‍♀️");
+});
 
-export default db
+export default mongoose;
