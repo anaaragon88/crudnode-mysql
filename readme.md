@@ -7,5 +7,5 @@ node app.js
 levantar el front
 
 ```
-npm run start
+npm run start:
 ```
